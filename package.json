@@ -9,7 +9,8 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "postinstall": "pnpm add critters@latest"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -44,7 +45,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.0.4",
-    "critters": "npm:beasties@latest",
+    "critters": "^0.0.25",
     "date-fns": "3.6.0",
     "embla-carousel-react": "8.5.1",
     "git": "^0.1.5",
