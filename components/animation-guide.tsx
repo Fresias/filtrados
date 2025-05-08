@@ -5,6 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Copy, Check } from "lucide-react"
 import { useState } from "react"
+// @ts-expect-error: Declaración para importación minificada de GSAP
+// eslint-disable-next-line
+import { gsap } from "gsap/dist/gsap.min.js"
 
 export function AnimationGuide() {
   const [copiedSnippet, setCopiedSnippet] = useState<string | null>(null)

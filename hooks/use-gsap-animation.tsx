@@ -3,8 +3,8 @@
 import type React from "react"
 
 import { useEffect, useRef } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { gsap } from "gsap/dist/gsap.min.js"
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger.min.js"
 
 // Tipos para las configuraciones
 type AnimationType = "fade" | "slide" | "scale" | "custom"
