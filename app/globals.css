@@ -1,0 +1,160 @@
+/* Eliminamos la importación de Google Fonts que causaba el error */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ocultar scrollbar pero mantener funcionalidad */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+@layer base {
+  :root {
+    --background: 39 70% 93%;
+    --foreground: 20 40% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 40% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 40% 15%;
+
+    --primary: 25 70% 33%;
+    --primary-foreground: 30 30% 98%;
+
+    --secondary: 165 16% 65%;
+    --secondary-foreground: 25 70% 33%;
+
+    --muted: 165 16% 65%;
+    --muted-foreground: 25 30% 40%;
+
+    --accent: 165 16% 65%;
+    --accent-foreground: 25 70% 33%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 30 30% 98%;
+
+    --border: 20 30% 85%;
+    --input: 20 30% 85%;
+    --ring: 25 70% 33%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 40% 15%;
+    --foreground: 30 30% 98%;
+
+    --card: 20 40% 10%;
+    --card-foreground: 30 30% 98%;
+
+    --popover: 20 40% 10%;
+    --popover-foreground: 30 30% 98%;
+
+    --primary: 25 70% 45%;
+    --primary-foreground: 30 30% 98%;
+
+    --secondary: 165 16% 35%;
+    --secondary-foreground: 30 30% 98%;
+
+    --muted: 165 16% 35%;
+    --muted-foreground: 25 30% 70%;
+
+    --accent: 165 16% 35%;
+    --accent-foreground: 30 30% 98%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 30 30% 98%;
+
+    --border: 25 30% 30%;
+    --input: 25 30% 30%;
+    --ring: 25 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.hero-text {
+  font-size: clamp(3rem, 15vw, 12rem);
+  line-height: 0.9;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.font-display {
+  font-family: var(--font-space-grotesk);
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: var(--font-work-sans);
+}
+
+.menu-item-appear {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.location-marker {
+  width: 20px;
+  height: 20px;
+  background-color: hsl(var(--primary));
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.location-pulse {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: hsl(var(--primary) / 0.3);
+  transform: translate(-50%, -50%);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Añadir esta clase para el contenedor de ancho completo */
+.container-fluid {
+  width: 100%;
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Añadir estilos para las animaciones de palabras y poesía */
+.word-item {
+  transition: opacity 0.5s ease;
+}
+
+/* Estilos para el poema con sangrías */
+.poetry-line {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Eliminar la regla de transición que añadimos anteriormente, ya que ahora lo manejamos con GSAP */
+/* Eliminamos la importación de Google Fonts que causaba el error */
