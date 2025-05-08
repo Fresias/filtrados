@@ -1,0 +1,17 @@
+{
+    "builds": [
+        {
+            "src": "package.json",
+            "use": "@vercel/next",
+            "config": {
+                "installCommand": "npm install && npm install critters@0.0.16"
+            }
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/"
+        }
+    ]
+}
