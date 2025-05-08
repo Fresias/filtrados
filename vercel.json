@@ -1,7 +1,6 @@
 {
-    "build": {
-      "env": {
-        "NPM_CONFIG_USER_AGENT": "pnpm"
-      }
+    "buildCommand": "rm -rf .next && pnpm run build",
+    "env": {
+      "NPM_CONFIG_USER_AGENT": "pnpm"
     }
   }
