@@ -9,6 +9,7 @@ const nextConfig = {
   },
   experimental: {
     optimizeServerReact: true,
+    optimizeCss: false, // Explicitly disable this feature
   },
   eslint: {
     ignoreDuringBuilds: true,
