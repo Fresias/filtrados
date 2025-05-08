@@ -9,6 +9,7 @@ const nextConfig = {
   },
   experimental: {
     optimizeCss: false,
+    serverComponentsExternalPackages: [],
     optimizeServerReact: true,
   },
   eslint: {
