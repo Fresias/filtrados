@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ProductItem } from "./product-item"
 import Image from "next/image"
 import { getAllProducts } from "@/data/products"
+import type { Product } from "@/types/product"
 
 export function ShopSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -22,7 +23,7 @@ export function ShopSection() {
     const mm = gsap.matchMedia()
 
     // Store all animations and ScrollTriggers for cleanup
-    const animations = []
+    const animations: gsap.core.Tween[] = []
     const scrollTriggers = []
 
     // Animations for all screen sizes
@@ -154,7 +155,7 @@ export function ShopSection() {
 
   // Función para distribuir productos en columnas
   // Si no es múltiplo de 3, prioriza la columna central
-  const distributeProducts = (products) => {
+  const distributeProducts = (products: Product[]) => {
     const leftColumn = []
     const centerColumn = []
     const rightColumn = []
@@ -214,7 +215,7 @@ export function ShopSection() {
             {leftColumn.map((product) => (
               <ProductItem
                 key={product.id}
-                product={product}
+                product={{ ...product, price: product.formattedPrice }}
                 isActive={activeProduct === product.id}
                 onClick={() => handleProductClick(product.id)}
               />
@@ -227,13 +228,7 @@ export function ShopSection() {
             {centerColumn.length > 0 && (
               <div className="product-item flex items-center justify-center p-8 border border-[#570B0A]/20 aspect-square">
                 <div className="w-full max-w-[200px]">
-                  <Image
-                    src="/placeholder.svg?key=49nwz"
-                    alt="Logo"
-                    width={200}
-                    height={200}
-                    className="w-full h-auto"
-                  />
+                 
                 </div>
               </div>
             )}
@@ -242,7 +237,7 @@ export function ShopSection() {
             {centerColumn.map((product) => (
               <ProductItem
                 key={product.id}
-                product={product}
+                product={{ ...product, price: product.formattedPrice }}
                 isActive={activeProduct === product.id}
                 onClick={() => handleProductClick(product.id)}
               />
@@ -254,7 +249,7 @@ export function ShopSection() {
             {rightColumn.map((product) => (
               <ProductItem
                 key={product.id}
-                product={product}
+                product={{ ...product, price: product.formattedPrice }}
                 isActive={activeProduct === product.id}
                 onClick={() => handleProductClick(product.id)}
               />
