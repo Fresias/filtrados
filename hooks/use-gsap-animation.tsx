@@ -3,7 +3,11 @@
 import type React from "react"
 
 import { useEffect, useRef } from "react"
+// @ts-expect-error: Declaración para importación minificada de GSAP
+// eslint-disable-next-line
 import { gsap } from "gsap/dist/gsap.min.js"
+// @ts-expect-error: Declaración para importación minificada de ScrollTrigger
+// eslint-disable-next-line
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger.min.js"
 
 // Tipos para las configuraciones
@@ -51,8 +55,14 @@ export function useGsapAnimation(options: AnimationOptions) {
 
     // Preparar targets
     const targets = Array.isArray(options.target)
-      ? (options.target as any[]).map((t) => (t.current ? t.current : t)).filter(Boolean)
-      : [options.target.current ? options.target.current : options.target]
+      ? (options.target as Array<HTMLElement | React.RefObject<HTMLElement>>)
+          .map((t) => (isRefObject(t) ? t.current : t))
+          .filter(Boolean)
+      : [isRefObject(options.target) ? options.target.current : options.target]
+
+    function isRefObject(obj: any): obj is React.RefObject<HTMLElement> {
+      return obj && typeof obj === "object" && "current" in obj;
+    }
 
     // Configuraciones predeterminadas que coinciden con los valores comunes existentes
     // Estos solo se usan si no se proporcionan valores específicos
@@ -75,7 +85,7 @@ export function useGsapAnimation(options: AnimationOptions) {
     if (options.type === "custom" && options.customAnimation) {
       // Animación personalizada
       options.customAnimation(tl, targets)
-    } else {
+    } else if (options.type === "fade" || options.type === "slide" || options.type === "scale") {
       // Usar configuraciones predeterminadas si no se proporcionan específicas
       const config = defaultConfigs[options.type]
       const fromConfig = options.from || config.from
