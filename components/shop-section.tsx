@@ -5,6 +5,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { ProductItem } from "./product-item"
 import Image from "next/image"
+import { getAllProducts } from "@/data/products"
 
 export function ShopSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -149,58 +150,7 @@ export function ShopSection() {
     setActiveProduct(activeProduct === productId ? null : productId)
   }
 
-  const products = [
-    {
-      id: "v60-pour-over",
-      name: "V60 Pour Over",
-      price: "$45.99",
-      image: "/placeholder.svg?key=p7m40",
-      description:
-        "Cafetera de goteo para una extracción perfecta. Diseño elegante y funcional que resalta los sabores más sutiles del café.",
-      width: 600,
-      height: 600,
-    },
-    {
-      id: "gooseneck-kettle",
-      name: "Pava Eléctrica Gooseneck",
-      price: "$79.99",
-      image: "/placeholder.svg?key=t2w73",
-      description:
-        "Control preciso de temperatura y flujo de agua. Ideal para métodos de preparación manual como pour over y aeropress.",
-      width: 600,
-      height: 600,
-    },
-    {
-      id: "coffee-jar",
-      name: "Jarra de Café",
-      price: "$32.50",
-      image: "/coffee-server-jar.png",
-      description:
-        "Elegante jarra para servir café recién preparado. Mantiene la temperatura ideal y presenta tu café con estilo.",
-      width: 600,
-      height: 600,
-    },
-    {
-      id: "latte-art-pitcher",
-      name: "Jarra para Latte Art",
-      price: "$24.99",
-      image: "/placeholder.svg?key=ics1i",
-      description:
-        "Jarra de acero inoxidable diseñada específicamente para crear hermosos diseños de latte art. Pico vertedor de precisión.",
-      width: 600,
-      height: 600,
-    },
-    {
-      id: "precision-scale",
-      name: "Báscula de Precisión",
-      price: "$39.99",
-      image: "/placeholder.svg?key=ko6e8",
-      description:
-        "Báscula digital con precisión de 0.1g y temporizador integrado. Esencial para preparaciones consistentes y de alta calidad.",
-      width: 600,
-      height: 600,
-    },
-  ]
+  const products = getAllProducts()
 
   // Función para distribuir productos en columnas
   // Si no es múltiplo de 3, prioriza la columna central
